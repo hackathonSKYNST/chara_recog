@@ -234,31 +234,31 @@ namespace SKYNST_CharaRecog
         
         private void button_output_Click(object sender, EventArgs e)
         {//236行目
+            //ここから出力ダイアログボックスの設定//
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = "新しいファイル.txt";
+            sfd.InitialDirectory = @"C:\";
+            sfd.Filter = "テキストファイル(*.txt;)|*.txt;*|すべてのファイル(*.*)|*.*";
+            sfd.FilterIndex = 2;
+            sfd.Title = "保存先のファイルを選択してください";
+            sfd.RestoreDirectory = true;
+            sfd.OverwritePrompt = true;
+            sfd.CheckPathExists = true;
+            //ここまで出力ダイアログボックスの設定//
 
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
+                System.IO.StreamWriter writer = new System.IO.StreamWriter(@sfd.FileName, false, sjisEnc);
+                writer.WriteLine("テスト書き込みです。");//ここにtesseractから送られてきた文字をぶち込む//
+                writer.Close();
+            }
 
 
 
 
 
             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
