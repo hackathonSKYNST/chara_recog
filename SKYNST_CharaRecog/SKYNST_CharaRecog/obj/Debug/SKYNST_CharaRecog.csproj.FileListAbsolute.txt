@@ -205,3 +205,15 @@ C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\obj\Debug\SKYNST_
 C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\obj\Debug\SKYNST_CharaRecog.Form2.resources
 C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\obj\Debug\SKYNST_CharaRecog.Properties.Resources.resources
 C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\obj\Debug\SKYNST_CharaRecog.csproj.GenerateResource.Cache
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Controls.dll
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.dll
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Imaging.dll
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Math.dll
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Video.DirectShow.dll
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Video.dll
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.xml
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Controls.xml
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Imaging.xml
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Math.xml
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Video.xml
+C:\git\SKY_NST\chara_recog\SKYNST_CharaRecog\SKYNST_CharaRecog\bin\Debug\AForge.Video.DirectShow.xml
