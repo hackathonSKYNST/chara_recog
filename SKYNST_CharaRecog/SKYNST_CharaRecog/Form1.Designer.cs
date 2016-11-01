@@ -36,12 +36,15 @@
             this.textBox_pass = new System.Windows.Forms.TextBox();
             this.textBox_result = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.checkBox_eng = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(12, 131);
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox.Location = new System.Drawing.Point(12, 115);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(360, 268);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -60,7 +63,7 @@
             // 
             // button_output
             // 
-            this.button_output.Location = new System.Drawing.Point(297, 477);
+            this.button_output.Location = new System.Drawing.Point(297, 450);
             this.button_output.Name = "button_output";
             this.button_output.Size = new System.Drawing.Size(75, 23);
             this.button_output.TabIndex = 6;
@@ -98,7 +101,7 @@
             // 
             // textBox_result
             // 
-            this.textBox_result.Location = new System.Drawing.Point(12, 425);
+            this.textBox_result.Location = new System.Drawing.Point(12, 398);
             this.textBox_result.Multiline = true;
             this.textBox_result.Name = "textBox_result";
             this.textBox_result.Size = new System.Drawing.Size(266, 75);
@@ -108,11 +111,22 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // checkBox_eng
+            // 
+            this.checkBox_eng.AutoSize = true;
+            this.checkBox_eng.Location = new System.Drawing.Point(12, 93);
+            this.checkBox_eng.Name = "checkBox_eng";
+            this.checkBox_eng.Size = new System.Drawing.Size(61, 16);
+            this.checkBox_eng.TabIndex = 11;
+            this.checkBox_eng.Text = "English";
+            this.checkBox_eng.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 512);
+            this.ClientSize = new System.Drawing.Size(384, 482);
+            this.Controls.Add(this.checkBox_eng);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.button_start);
             this.Controls.Add(this.button_output);
@@ -138,6 +152,7 @@
         private System.Windows.Forms.TextBox textBox_pass;
         private System.Windows.Forms.TextBox textBox_result;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.CheckBox checkBox_eng;
 
     }
 }

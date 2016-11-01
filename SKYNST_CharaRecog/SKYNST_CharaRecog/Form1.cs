@@ -194,7 +194,12 @@ namespace SKYNST_CharaRecog
                 return;
             }
 
-            textBox_result.Text = chara_recog_result = chara_recog(image1);
+            if(checkBox_eng.Checked){
+                textBox_result.Text = chara_recog_result = chara_recog(image1, "eng");
+            }
+            else{
+                textBox_result.Text = chara_recog_result = chara_recog(image1, "jpn");
+            }
 
             button_output.Enabled = true;
 
@@ -287,11 +292,11 @@ namespace SKYNST_CharaRecog
 
         }//288行目
 
-        //================ 以下、自作のクラス ================
+        //================ 以下、自作のメソッド ================
         
 
-        //●文字認識を行うクラス
-        private string chara_recog(Bitmap image)
+        //●文字認識を行うメソッド
+        private string chara_recog(Bitmap image, string lang)
         {
             //文字認識結果
             string str;
@@ -300,7 +305,7 @@ namespace SKYNST_CharaRecog
             //  言語データの場所と言語名を引数で指定する
             var tesseract = new Tesseract.TesseractEngine(
                 @"..\..\..\tessdata", // 言語ファイルを「C:\tessdata」に置いた場合
-                "jpg");         // 英語なら"eng" 「○○.traineddata」の○○の部分
+                lang);         // 英語なら"eng" 「○○.traineddata」の○○の部分
 
             // OCRの実行と表示
             var page = tesseract.Process(image);
