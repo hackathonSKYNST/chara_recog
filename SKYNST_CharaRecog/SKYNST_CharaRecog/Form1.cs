@@ -124,6 +124,11 @@ namespace SKYNST_CharaRecog
 
         private void button_brows_Click(object sender, EventArgs e)
         {//126行目
+            DialogResult dr = openFileDialog1.ShowDialog();
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                textBox_pass.Text = openFileDialog1.FileName;
+            }
 
 
 
@@ -167,12 +172,7 @@ namespace SKYNST_CharaRecog
 
 
 
-
-
-
-
-
-
+                        
 
 
         }//178行目

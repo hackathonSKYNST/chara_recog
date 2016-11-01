@@ -35,6 +35,7 @@
             this.button_brows = new System.Windows.Forms.Button();
             this.textBox_pass = new System.Windows.Forms.TextBox();
             this.textBox_result = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,6 +104,10 @@
             this.textBox_result.TabIndex = 4;
             this.textBox_result.Text = "文字認識結果文字列";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -132,6 +137,7 @@
         private System.Windows.Forms.Button button_brows;
         private System.Windows.Forms.TextBox textBox_pass;
         private System.Windows.Forms.TextBox textBox_result;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
 
     }
 }
