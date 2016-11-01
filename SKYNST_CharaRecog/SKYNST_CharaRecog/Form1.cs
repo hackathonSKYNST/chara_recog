@@ -12,13 +12,26 @@ namespace SKYNST_CharaRecog
 {
     public partial class Form1 : Form
     {
+        string chara_recog_result;
+
+
+
+
+
+
+
+
+
+
+
         public Form1()
-        {//16行目
+        {//28行目
             InitializeComponent();
 
+            this.textBox_result.ReadOnly = true;
 
-
-
+            button_output.Enabled = false;
+            
 
 
 
@@ -36,18 +49,6 @@ namespace SKYNST_CharaRecog
 
 
             
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -179,24 +180,24 @@ namespace SKYNST_CharaRecog
 
         private void button_start_Click(object sender, EventArgs e)
         {//181行目
-
-
-            string text1 = textBox_pass.Text;
-
+            string text = textBox_pass.Text;
+            Bitmap image1 = null;
             try
             {
                 // 画像をビットマップ型で読み込み
-                Bitmap image1 = new Bitmap(text1);
+                image1 = new Bitmap(text);
 
                 pictureBox.Image = image1;
             }
             catch (System.ArgumentException)
             {
                 MessageBox.Show("入力が無効です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
+            textBox_result.Text = chara_recog_result = chara_recog(image1);
 
-
+            button_output.Enabled = true;
 
 
 
@@ -250,7 +251,7 @@ namespace SKYNST_CharaRecog
             {
                 Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
                 System.IO.StreamWriter writer = new System.IO.StreamWriter(@sfd.FileName, false, sjisEnc);
-                writer.WriteLine("テスト書き込みです。");//ここにtesseractから送られてきた文字をぶち込む//
+                writer.WriteLine(chara_recog_result);//ここにtesseractから送られてきた文字をぶち込む//
                 writer.Close();
             }
 
@@ -291,15 +292,23 @@ namespace SKYNST_CharaRecog
         
 
         //●文字認識を行うクラス
-        private string chara_recog()
+        private string chara_recog(Bitmap image)
         {
-            string str = "";
+            //文字認識結果
+            string str;
 
+            // OCRを行うオブジェクトの生成
+            //  言語データの場所と言語名を引数で指定する
+            var tesseract = new Tesseract.TesseractEngine(
+                @"..\..\..\tessdata", // 言語ファイルを「C:\tessdata」に置いた場合
+                "jpg");         // 英語なら"eng" 「○○.traineddata」の○○の部分
+
+            // OCRの実行と表示
+            var page = tesseract.Process(image);
+            str = page.GetText();
+
+            //文字認識結果を返す
             return str;
-
-
-
-
 
 
 

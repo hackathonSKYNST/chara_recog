@@ -44,6 +44,7 @@
             this.pictureBox.Location = new System.Drawing.Point(12, 131);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(360, 268);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 9;
             this.pictureBox.TabStop = false;
             // 
@@ -102,7 +103,6 @@
             this.textBox_result.Name = "textBox_result";
             this.textBox_result.Size = new System.Drawing.Size(266, 75);
             this.textBox_result.TabIndex = 4;
-            this.textBox_result.Text = "文字認識結果文字列";
             // 
             // openFileDialog1
             // 
