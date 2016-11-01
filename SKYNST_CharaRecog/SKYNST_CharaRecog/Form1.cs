@@ -57,8 +57,7 @@ namespace SKYNST_CharaRecog
 
 
 
-
-
+            
 
 
 
@@ -309,50 +308,6 @@ namespace SKYNST_CharaRecog
 
             //文字認識結果を返す
             return str;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }//347行目
+        }//312行
     }
 }
