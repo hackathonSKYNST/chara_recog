@@ -181,19 +181,19 @@ namespace SKYNST_CharaRecog
         {//181行目
 
 
+            string text1 = textBox_pass.Text;
 
+            try
+            {
+                // 画像をビットマップ型で読み込み
+                Bitmap image1 = new Bitmap(text1);
 
-
-
-
-
-
-
-
-
-
-
-
+                pictureBox.Image = image1;
+            }
+            catch (System.ArgumentException)
+            {
+                MessageBox.Show("入力が無効です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
 
@@ -240,7 +240,7 @@ namespace SKYNST_CharaRecog
 
 
 
-
+            
 
 
 
