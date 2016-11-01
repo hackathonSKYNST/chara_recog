@@ -42,7 +42,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox.Location = new System.Drawing.Point(12, 115);
             this.pictureBox.Name = "pictureBox";
