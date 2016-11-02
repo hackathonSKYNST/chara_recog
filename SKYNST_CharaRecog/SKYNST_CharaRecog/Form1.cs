@@ -12,7 +12,8 @@ namespace SKYNST_CharaRecog
 {
     public partial class Form1 : Form
     {
-        string chara_recog_result;
+        /*================ グローバル変数 ================*/　//15行目
+        // 読み込んだ画像を格納する変数
         public static Bitmap image = null;
 
 
@@ -21,16 +22,22 @@ namespace SKYNST_CharaRecog
 
 
 
+        
 
 
 
+
+        /*================================================*/  //30行目
+
+
+        //●コンストラクタ
         public Form1()
-        {//28行目
+        {//35行目
             InitializeComponent();
 
-            this.textBox_result.ReadOnly = true;
+            this.textBox_result.ReadOnly = true;//文字認識処理結果のテキストボックスは編集不可
 
-            button_output.Enabled = false;
+            button_output.Enabled = false;//初期状態では、出力ボタンを不可にする
             
 
 
@@ -49,14 +56,6 @@ namespace SKYNST_CharaRecog
 
 
             
-
-
-
-
-
-
-
-
             
 
 
@@ -64,12 +63,12 @@ namespace SKYNST_CharaRecog
 
 
 
+        }//66行目
+        
 
-        }//68行目
-
+        //●『カメラ起動』ボタン：クリックイベント
         private void button_webcam_Click(object sender, EventArgs e)
         {//71行目
-
             Form2 fo2 = new Form2();//インスタンス生成
             //Form2オープン、Form1は操作不能にする
             if (fo2.ShowDialog(this) == DialogResult.OK) { }
@@ -77,25 +76,10 @@ namespace SKYNST_CharaRecog
 
             fo2.Dispose();//リソースを開放
 
-            if (image != null)//imageに画像が入力されていたら処理開始
+            if (image != null)//imageに画像が入力されていたら画像表示
             {
                 pictureBox.Image = image;
-                if (checkBox_eng.Checked)
-                {
-                    textBox_result.Text = chara_recog_result = chara_recog(image, "eng");
-                }
-                else
-                {
-                    textBox_result.Text = chara_recog_result = chara_recog(image, "jpn");
-                }
-                button_output.Enabled = true;
             }
-
-
-
-
-
-
 
 
 
@@ -119,88 +103,110 @@ namespace SKYNST_CharaRecog
 
             
 
-                        
+
+
+            
+
+
+
+
+
+
+            
+
+
+
+
+              
+          
+            
         }//123行目
 
+
+        //●『参照』ボタン：クリックイベント
         private void button_brows_Click(object sender, EventArgs e)
-        {//126行目
-            DialogResult dr = openFileDialog1.ShowDialog();
+        {//128行目
+            DialogResult dr = openFileDialog1.ShowDialog();//参照フォームを開く
+            
+            //OKボタンを押下された場合
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                textBox_pass.Text = openFileDialog1.FileName;
+                textBox_pass.Text = openFileDialog1.FileName;//ディレクトリパスを入力するフォームに参照したパスを入力する
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        
-
-
-        }//178行目
-
-        private void button_start_Click(object sender, EventArgs e)
-        {//181行目
-            string text = textBox_pass.Text;
-            try
+            //画像をピクチャボックスに表示する
+            if (!(image_show()))
             {
-                // 画像をビットマップ型で読み込み
-                image = new Bitmap(text);
-
-                pictureBox.Image = image;
+                return;//画像の読み込みに失敗した場合、このイベントを終了する
             }
-            catch (System.ArgumentException)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    
+
+
+        }//180行目
+        
+
+        //●『画像表示』ボタン：クリックイベント
+        private void button_show_Click(object sender, EventArgs e)
+        {//185行目
+            // 入力されたパスの画像をピクチャボックスに表示する
+            if(!(image_show()))
             {
-                MessageBox.Show("入力が無効です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return;//画像の読み込みに失敗した場合、このイベントを終了する
             }
 
-            if(checkBox_eng.Checked){
-                textBox_result.Text = chara_recog_result = chara_recog(image, "eng");
-            }
-            else{
-                textBox_result.Text = chara_recog_result = chara_recog(image, "jpn");
-            }
 
-            button_output.Enabled = true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -228,12 +234,12 @@ namespace SKYNST_CharaRecog
 
 
 
-
-
-        }//233行目
+        }//237行目
         
+
+        //●『出力』ボタン：クリックイベント
         private void button_output_Click(object sender, EventArgs e)
-        {//236行目
+        {//242行目
             //ここから出力ダイアログボックスの設定//
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.FileName = "新しいファイル.txt";
@@ -250,7 +256,7 @@ namespace SKYNST_CharaRecog
             {
                 Encoding sjisEnc = Encoding.GetEncoding("Shift_JIS");
                 System.IO.StreamWriter writer = new System.IO.StreamWriter(@sfd.FileName, false, sjisEnc);
-                writer.WriteLine(chara_recog_result);//ここにtesseractから送られてきた文字をぶち込む//
+                writer.WriteLine(textBox_result.Text);//ここにtesseractから送られてきた文字をぶち込む//
                 writer.Close();
             }
 
@@ -285,15 +291,169 @@ namespace SKYNST_CharaRecog
 
 
 
-        }//288行目
+        }//294行目
 
-        //================ 以下、自作のメソッド ================
+
+        //●『解析』ボタン：クリックイベント
+        private void button_start_Click(object sender, EventArgs e)
+        {//299行目
+            //文字認識処理を開始する
+            chara_recog_start(image);
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }//350行目
+
+
+        /*================ メニューバーのイベント ================*/
+
+        private void フォルダから参照BToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void カメラ起動CToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 出力OToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 閉じるToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void トリミングTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 戻るToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 進むToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
         
 
-        //●文字認識を行うメソッド
-        private string chara_recog(Bitmap image, string lang)
+        /*================ 以下、自作のメソッド ================*/
+
+        //●入力されたパスの画像をピクチャボックスに表示するメソッド
+        //・戻り値 true ：画像の読み込みに成功
+        //         false：画像の読み込みに失敗
+        private bool image_show()
         {
-            //文字認識結果
+            try
+            {
+                image = new Bitmap(textBox_pass.Text);// 画像をビットマップ型で読み込み
+                pictureBox.Image = image;// 画像をピクチャボックスに表示
+            }
+            //↓読み込めなかった場合の処理↓
+            catch (System.ArgumentException)
+            {
+                // エラーのメッセージボックスを表示する
+                MessageBox.Show("入力が無効です。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+
+        //●文字認識を行うメソッド
+        //・引数    Bitmap img：文字認識処理対象の画像を指定する
+        private void chara_recog_start(Bitmap img)
+        {
+            //処理中であることをテキストボックスに表示する
+            textBox_result.Text = "解析中...";
+            this.Refresh();
+
+            //『English』のチェックボックスがチェックされているかの判定
+            if (checkBox_eng.Checked)
+            {
+                // Englishにチェックが入っている
+                // →engの言語データで文字認識処理を行う
+                textBox_result.Text = chara_recog(img, "eng");
+            }
+            else
+            {
+                // Englishにチェックが入っていない
+                // →jpnの言語データで文字認識処理を行う
+                textBox_result.Text = chara_recog(img, "jpn");
+            }
+
+            //処理が完了したことを知らせるメッセージボックスを表示
+            MessageBox.Show("解析が終了しました！", "解析終了", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //出力ボタンを押下可能にする
+            button_output.Enabled = true;
+        }//311行
+
+
+        //●文字認識処理
+        //・引数  Bitmap img ：文字認識処理対象の画像を指定する
+        //        string lang：文字認識処理を行う言語を指定する
+        //・戻り値：文字認識処理結果
+        private string chara_recog(Bitmap img, string lang)
+        {
+            //文字認識結果を格納する変数
             string str;
 
             // OCRを行うオブジェクトの生成
@@ -303,7 +463,7 @@ namespace SKYNST_CharaRecog
                 lang);         // 英語なら"eng" 「○○.traineddata」の○○の部分
 
             // OCRの実行と表示
-            var page = tesseract.Process(image);
+            var page = tesseract.Process(img);
             str = page.GetText();
 
             //文字認識結果を返す
