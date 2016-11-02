@@ -13,7 +13,7 @@ namespace SKYNST_CharaRecog
     public partial class Form1 : Form
     {
         string chara_recog_result;
-
+        public static Bitmap image = null;
 
 
 
@@ -70,6 +70,26 @@ namespace SKYNST_CharaRecog
         private void button_webcam_Click(object sender, EventArgs e)
         {//71行目
 
+            Form2 fo2 = new Form2();//インスタンス生成
+            //Form2オープン、Form1は操作不能にする
+            if (fo2.ShowDialog(this) == DialogResult.OK) { }
+            else { }
+
+            fo2.Dispose();//リソースを開放
+
+            if (image != null)//imageに画像が入力されていたら処理開始
+            {
+                pictureBox.Image = image;
+                if (checkBox_eng.Checked)
+                {
+                    textBox_result.Text = chara_recog_result = chara_recog(image, "eng");
+                }
+                else
+                {
+                    textBox_result.Text = chara_recog_result = chara_recog(image, "jpn");
+                }
+                button_output.Enabled = true;
+            }
 
 
 
@@ -97,29 +117,9 @@ namespace SKYNST_CharaRecog
 
 
 
+            
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        
         }//123行目
 
         private void button_brows_Click(object sender, EventArgs e)
@@ -180,13 +180,12 @@ namespace SKYNST_CharaRecog
         private void button_start_Click(object sender, EventArgs e)
         {//181行目
             string text = textBox_pass.Text;
-            Bitmap image1 = null;
             try
             {
                 // 画像をビットマップ型で読み込み
-                image1 = new Bitmap(text);
+                image = new Bitmap(text);
 
-                pictureBox.Image = image1;
+                pictureBox.Image = image;
             }
             catch (System.ArgumentException)
             {
@@ -195,10 +194,10 @@ namespace SKYNST_CharaRecog
             }
 
             if(checkBox_eng.Checked){
-                textBox_result.Text = chara_recog_result = chara_recog(image1, "eng");
+                textBox_result.Text = chara_recog_result = chara_recog(image, "eng");
             }
             else{
-                textBox_result.Text = chara_recog_result = chara_recog(image1, "jpn");
+                textBox_result.Text = chara_recog_result = chara_recog(image, "jpn");
             }
 
             button_output.Enabled = true;
@@ -225,11 +224,7 @@ namespace SKYNST_CharaRecog
 
 
 
-
-
-
-
-
+            
 
 
 
@@ -313,6 +308,6 @@ namespace SKYNST_CharaRecog
 
             //文字認識結果を返す
             return str;
-        }//312行
+        }//311行
     }
 }
