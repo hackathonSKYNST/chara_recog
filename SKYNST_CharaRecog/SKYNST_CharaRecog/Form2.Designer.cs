@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.webcamArea = new System.Windows.Forms.PictureBox();
             this.button_cansel = new System.Windows.Forms.Button();
             this.button_chapture = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.webcamArea)).BeginInit();
+            this.Start_Camera = new System.Windows.Forms.Button();
+            this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer();
             this.SuspendLayout();
-            // 
-            // webcamArea
-            // 
-            this.webcamArea.Location = new System.Drawing.Point(13, 16);
-            this.webcamArea.Name = "webcamArea";
-            this.webcamArea.Size = new System.Drawing.Size(458, 268);
-            this.webcamArea.TabIndex = 5;
-            this.webcamArea.TabStop = false;
             // 
             // button_cansel
             // 
@@ -62,25 +54,47 @@
             this.button_chapture.UseVisualStyleBackColor = true;
             this.button_chapture.Click += new System.EventHandler(this.button_chapture_Click);
             // 
+            // Start_Camera
+            // 
+            this.Start_Camera.Location = new System.Drawing.Point(208, 304);
+            this.Start_Camera.Name = "Start_Camera";
+            this.Start_Camera.Size = new System.Drawing.Size(75, 23);
+            this.Start_Camera.TabIndex = 4;
+            this.Start_Camera.Text = "シャッター";
+            this.Start_Camera.UseVisualStyleBackColor = true;
+            this.Start_Camera.Click += new System.EventHandler(this.Start_Camera_Click);
+            // 
+            // videoSourcePlayer1
+            // 
+            this.videoSourcePlayer1.Location = new System.Drawing.Point(12, 12);
+            this.videoSourcePlayer1.Name = "videoSourcePlayer1";
+            this.videoSourcePlayer1.Size = new System.Drawing.Size(460, 277);
+            this.videoSourcePlayer1.TabIndex = 5;
+            this.videoSourcePlayer1.Text = "videoSourcePlayer1";
+            this.videoSourcePlayer1.VideoSource = null;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 342);
-            this.Controls.Add(this.webcamArea);
+            this.Controls.Add(this.videoSourcePlayer1);
             this.Controls.Add(this.button_cansel);
+            this.Controls.Add(this.Start_Camera);
             this.Controls.Add(this.button_chapture);
             this.Name = "Form2";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.webcamArea)).EndInit();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox webcamArea;
         private System.Windows.Forms.Button button_cansel;
         private System.Windows.Forms.Button button_chapture;
+        private System.Windows.Forms.Button Start_Camera;
+        private AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
     }
 }
