@@ -60,7 +60,7 @@
             this.Start_Camera.Name = "Start_Camera";
             this.Start_Camera.Size = new System.Drawing.Size(75, 23);
             this.Start_Camera.TabIndex = 4;
-            this.Start_Camera.Text = "シャッター";
+            this.Start_Camera.Text = "カメラ起動";
             this.Start_Camera.UseVisualStyleBackColor = true;
             this.Start_Camera.Click += new System.EventHandler(this.Start_Camera_Click);
             // 
@@ -83,7 +83,7 @@
             this.Controls.Add(this.Start_Camera);
             this.Controls.Add(this.button_chapture);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "カメラフォーム";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
